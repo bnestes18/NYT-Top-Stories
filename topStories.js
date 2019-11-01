@@ -12,8 +12,8 @@
             } 
         }).then(function (data) {
             app.innerHTML = '<div>' + data.results.map(function (result) {
-                let { abstract, byline, title } = result;
-                    return '<h2><a href="#>' + title + '</a></h2>' + '<p>' + byline + '</p>' + '<p>' + abstract + '</p>'
+                let { abstract, byline, title, url } = result;
+                    return '<h2><a href="'+ url +'">' + title + '</a></h2>' + '<p>' + byline + '</p>' + '<p>' + abstract + '</p>'
             }).join('') + '</div>';
         }).catch(function (err) {
             console.log(err);
