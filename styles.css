@@ -8,6 +8,11 @@ body {
     max-width: 50rem;
 }
 
-#app {
-    margin-top: 5rem;
+body > h2 {
+    font-style: italic;
+}
+
+div > h2 {
+    text-transform: capitalize;
+    margin: 5rem 0 3rem 0;
 }
