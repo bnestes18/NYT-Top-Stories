@@ -36,21 +36,31 @@
             return articles.slice(0, 4);
         };
 
+        let sanitizeHTML = function (str) {
+            var temp = document.createElement('div');
+            temp.textContent = str;
+            return temp.innerHTML;
+        };
+
         let render = function (articles, section) {
             // Create a new array of markup strings with array.map(), then
             // combine them into one string with array.join(), then
             // insert them into the DOM with innerHTML
+            
 
             app.innerHTML += '<h2>' + section + '</h2>' + articles.map(function (article) {
+                let { url, title, byline, abstract} = article;
                 let html = 
                     '<article>' +
-                        '<h3><a href="' + article.url + '">' + article.title + '</a></h3>' +
-                        '<p>' + article.byline + '</p>' +
-                        '<p>' + article.abstract + '</p>' +
+                        '<h3><a href="' + sanitizeHTML(url) + '">' + sanitizeHTML(title) + '</a></h3>' +
+                        '<p>' + sanitizeHTML(byline) + '</p>' +
+                        '<p>' + sanitizeHTML(abstract) + '</p>' +
                     '</article>';
-                    return html;
+                return html;
             }).join('');
         }
+
+        
 })();
 
 
